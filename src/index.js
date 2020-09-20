@@ -29,7 +29,7 @@ class Game extends React.Component {
     square[i] = this.state.xIsNext? 'X' : 'O';
     this.setState({
       //use concat because it does not change the existing arrays, but returns a new array
-      history: history:concat([{
+      history: history.concat([{
         squares: squares,
       }]),
       stepNumber: history.length,
