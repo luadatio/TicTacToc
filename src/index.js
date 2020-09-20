@@ -22,11 +22,11 @@ class Game extends React.Component {
     const current = history[history.length - 1];
     const squares = this.state.squares.slice();
     // ignores a click whenever some player has won the game
-    if (calcaulateWinner(square) || squares[i]) {
+    if (calcaulateWinner(squares) || squares[i]) {
       return;
     }
     // true: 'X'; false: 'O'
-    square[i] = this.state.xIsNext? 'X' : 'O';
+    squares[i] = this.state.xIsNext? 'X' : 'O';
     this.setState({
       //use concat because it does not change the existing arrays, but returns a new array
       history: history.concat([{
@@ -37,10 +37,10 @@ class Game extends React.Component {
     });
   }
 
-  jumpTo() {
+  jumpTo(step) {
     this.setState({
       stepNumber: step,
-      xIsNext: (step % 2 ) === 0;,
+      xIsNext: (step % 2 ) === 0,
     });
   }
 
@@ -58,7 +58,7 @@ class Game extends React.Component {
         'Go to game start';
       return (
         <li key ={move}>
-          <button onClick()={()=> this.jumpTo(move)}>
+          <button onClick={()=> this.jumpTo(move)}>
             {desc}
           </button>
         </li>
@@ -90,7 +90,6 @@ class Game extends React.Component {
       </div>
     );
   }
-
 }
 
 class Board extends React.Component{
@@ -109,7 +108,7 @@ class Board extends React.Component{
   render() {
     return (
     <div>
-      <div className = "status">{status}</div>
+      <div className="status">{status}</div>
       <div className="board-row">
         {this.renderSquare(0)}
         {this.renderSquare(1)}
