@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './TicTacToc.css';
+import './index.css';
 
 class Game extends React.Component {
   constructor(props) {
